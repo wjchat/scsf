@@ -1,0 +1,152 @@
+@import "global";
+
+
+$landingGrey: #202121;
+
+.landing {
+    height: 100vh;
+    min-height: $minHeight;
+    display: grid;
+    grid-template-rows: 15% 70% auto; //adjust these for horizontal spacing
+    grid-template-columns: 1fr 53% 1fr; //adjust these for vertical space
+    grid-template-areas:
+        ". title ."
+        "left video right"
+        ". bottom .";
+    & .title {
+        grid-area: title;
+        position: relative;
+        .logo {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto; //centers image
+            max-width: 20%; //adjust size of logo
+            cursor: pointer;
+            @include subAnimate;
+        }
+    }
+    & .left {
+        grid-area: left;
+        padding-left: $padding; //postition text horizontal (effects vertical)
+        height: 100%;
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr;
+        grid-template-areas: "here";
+        h1 {
+            grid-row: here;
+            grid-column: here;
+            color: $goldX;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            height: 100%;
+            font-size: $largeText;
+            margin-top: -3%; //position section vertically
+            span {
+                //used these to stagger text
+                display: inline-block;
+                line-height: 0;
+                z-index: 2;
+                @include subAnimate
+            }
+        }
+        .grey {
+            color: $landingGrey;
+            z-index: 1;
+            margin-top: -5%; //position grey relative to gold
+        }
+    }
+    & .video {
+        grid-area: video;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        video {
+            object-fit: cover;
+            height: auto;
+            max-width: 100%;
+            cursor: pointer;
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+    & .right {
+        grid-area: right;
+        @include bodyText;
+        width: 100%;
+        height: 100;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: right;
+        padding-right: $padding;
+        .top {
+            padding-left: 13%; //affects width of text
+            p{
+                @include subAnimate;
+            }
+        }
+        .bottomRight {
+            position: relative;
+            h1 {
+                font-size: $largeText;
+                line-height: 0;
+                color: $goldX;
+                @include subAnimate;
+            }
+            p {
+                margin-bottom: 30%; //adjust count vertically
+                line-height: 75%;
+                padding-right: 2%;
+                @include subAnimate;
+            }
+            .border {
+                position: absolute;
+                right: 0;
+                bottom: 15%; //position border vertically
+                width: 76%;
+                @include border;
+            }
+        }
+    }
+    & .bottom {
+        grid-area: bottom;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        img {
+            max-width: 5%; //arrow size
+            height: auto;
+            position: absolute;
+            top: 10%;
+            left: 0;
+            right: 0;
+            margin: auto;
+            cursor: pointer;
+            box-sizing: content-box;
+            padding: 10px;
+            @include subAnimate;
+        }
+        .shimmerBox {
+            display: block;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            p {
+                position: relative;
+                @include bodyText;
+                color: white;
+                margin-bottom: 13%; //position text from bottom of screen
+                filter: blur(3px);
+                opacity: 0;
+                transform: translatex(-5px);
+            }
+        }
+    }
+}

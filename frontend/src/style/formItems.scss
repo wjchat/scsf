@@ -1,0 +1,95 @@
+@import "global";
+
+$formFontSize: 2vw;
+
+.flexbox {
+    //dont change styles of flexbox here. just used as an indentifier. to change flexbox styles go to submission.scss
+    & > div {
+        //container of each element
+        @include subAnimate;
+        margin: 2% 0; //adjust space between boxes
+        width: 100%;
+        height: $formFontSize * 2;
+        position: relative;
+        border: solid $goldX 1px;
+        cursor: pointer;
+        border-radius: 1px;
+        input {
+            background: transparent;
+            border: none;
+            width: 100%;
+            color: white;
+        }
+    }
+    .file {
+        position: relative;
+        input {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            cursor: pointer;
+            opacity: 0;
+        }
+        input[type="file"]::-webkit-file-upload-button {
+            /* chromes and blink button */
+            cursor: pointer;
+        }
+    }
+    .labelContainer {
+        //control text style from here
+        font-size: $formFontSize;
+        font-family: $sans;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+        .label {
+            display: inline-block;
+            text-align: center;
+            color: $goldX;
+        }
+    }
+    .email {
+        padding-left: 5%;
+        padding-right: 5%;
+        border-color: $greyX;
+        & input:focus::placeholder {
+            color: transparent;
+        }
+        input{
+            height: 100%;
+        }
+    }
+    .x {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: -1 * $formFontSize * 1.5;
+        transform: translateX(0px);
+        cursor: pointer;
+        filter: blur(4px);
+        & > div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            font-family: $sans;
+            color: $goldX;
+            padding:0px 5px;
+        }
+    }
+    &>.message{
+        display: block;
+        @include bodyText;
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        border: none;
+        &>div{
+            width: 70%;
+            padding-top: 1%;
+        }
+    }
+}
