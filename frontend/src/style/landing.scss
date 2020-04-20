@@ -46,6 +46,7 @@ $landingGrey: #202121;
             height: 100%;
             font-size: $largeText;
             margin-top: -3%; //position section vertically
+            font-family: $sans;
             span {
                 //used these to stagger text
                 display: inline-block;
@@ -98,6 +99,7 @@ $landingGrey: #202121;
                 line-height: 0;
                 color: $goldX;
                 @include subAnimate;
+                font-family: $sans;
             }
             p {
                 margin-bottom: 30%; //adjust count vertically
