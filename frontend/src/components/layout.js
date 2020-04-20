@@ -6,8 +6,6 @@
  */
 
 import React from "react"
-import favicon from "../images/favicon.ico"
-import Helmet from "react-helmet"
 
 import "../style/layout.css"
 
