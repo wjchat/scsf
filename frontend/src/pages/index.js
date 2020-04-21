@@ -7,8 +7,16 @@ import SubmissionPage from "../components/submission.jsx"
 import Logo from "../images/Matte.svg"
 import { TimelineMax, TweenLite } from "gsap"
 
-
+import { gsap } from 'gsap'
+import { CSSPlugin } from 'gsap/CSSPlugin'
 import "../style/loader.scss"
+
+
+// Force CSSPlugin to not get dropped during build
+gsap.registerPlugin(CSSPlugin)
+
+
+
 
 ///landing opening animation ting
 const DotDotDot = () =>{

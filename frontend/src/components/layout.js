@@ -6,8 +6,19 @@
  */
 
 import React from "react"
-
 import "../style/layout.css"
+
+import { gsap } from 'gsap'
+import { CSSPlugin } from 'gsap/CSSPlugin'
+
+
+// Force CSSPlugin to not get dropped during build
+gsap.registerPlugin(CSSPlugin)
+
+
+
+
+
 
 const Layout = ({ children }) => {
     return (

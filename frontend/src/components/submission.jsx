@@ -3,6 +3,13 @@ import { TimelineMax } from "gsap"
 import "../style/submission.scss"
 import "../style/formItems.scss"
 
+import { gsap } from 'gsap'
+import { CSSPlugin } from 'gsap/CSSPlugin'
+
+
+// Force CSSPlugin to not get dropped during build
+gsap.registerPlugin(CSSPlugin)
+
 const gold = "#d3c371"
 const black = "black"
 

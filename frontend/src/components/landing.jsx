@@ -1,11 +1,20 @@
 import React,{useEffect, useCallback} from "react"
-
 import logo from "../images/Matte.svg"
 import arrow from "../images/Arrow.svg"
 import vid from "../images/video.mp4"
 import {TimelineMax} from "gsap"
-
+import { gsap } from 'gsap'
+import { CSSPlugin } from 'gsap/CSSPlugin'
 import "../style/landing.scss"
+
+
+// Force CSSPlugin to not get dropped during build
+gsap.registerPlugin(CSSPlugin)
+
+
+
+
+
 
 const Bottom = props => {
     let animate
