@@ -50,7 +50,7 @@ const Bottom = props => {
             onMouseLeave = {()=>handleHover(false)}
              src={arrow} alt="see more" />
             <div className="shimmerBox">
-                <p ref = {div=>animate=div}>tell us your story</p>
+                <p ref = {div=>animate=div}>tell your story</p>
             </div>
         </div>
     )
@@ -60,8 +60,8 @@ const Right = props => {
         <div className={props.className}>
             <div className="top">
                 <p>
-                    In a time of unprecedented devastation and uncertainity,
-                    everybody has a story.
+                    In a time of unprecedented devastation,
+                    everybody has a story to tell.
                 </p>
                 <p>
                     Matte Projects believes your experience needs to be heard.
@@ -69,7 +69,7 @@ const Right = props => {
                 <p>We invite you to help us tell the story of the world.</p>
             </div>
             <div className="bottomRight">
-                <h1>50000</h1>
+                <h1>641</h1>
                 <p>stories told</p>
                 <div className="border"></div>
             </div>
@@ -105,7 +105,7 @@ const Vid = props => {
                 onMouseEnter = {()=>showControls(true)}
                 onMouseLeave = {()=>showControls(false)}
                 onClick = {()=>handleClick()}
-                 ref = {div=>video=div} loop>
+                 ref = {div=>video=div} >
                 <source src={vid} type="video/mp4" />
                 <source src={vid} type="video/ogg" />
             </video>
@@ -177,7 +177,7 @@ const Main = props => {
                     className="logo"
                     src={logo}
                     alt="Matte Projects Brings You"
-                />
+                    />
             </div>
             <Left className="left" />
             <Vid className="video" />

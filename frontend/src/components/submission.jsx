@@ -24,7 +24,7 @@ const X = props => {
     let animate
     useEffect(() => {
         let tl = new TimelineMax()
-        let duration = 0.05
+        let duration = 0.25
         tl.to(animate, duration, {
             opacity: 1,
             ease: "easeIn"
@@ -32,7 +32,7 @@ const X = props => {
             animate,
             duration,
             {
-                x: 0,
+                x: 10,
                 filter: `blur(0px)`,
                 ease: "easeIn"
             },
@@ -50,7 +50,7 @@ const FormContainer = props => {
     let submitBox
     let fileInput
     //state tings
-    const [fileLabel, updateFileLabel] = useState("Upload a file")
+    const [fileLabel, updateFileLabel] = useState("Upload File")
     const [files, updateFile] = useState(null)
     const [email, updateEmail] = useState(null)
     const [message, updateMessage] = useState(null)
@@ -65,7 +65,7 @@ const FormContainer = props => {
                 updateFileLabel(name)
             }
         } else {
-            updateFileLabel("Upload a file")
+            updateFileLabel("Upload File")
         }
     },[files])
 
@@ -75,58 +75,38 @@ const FormContainer = props => {
     const setEmail = event => {
         updateEmail(event.target.value)
     }
+    const xClick = () => {
+      updateFile(null)
+      fileInput.value = ""
+    }
+    const clearMessage = () => {
+      updateMessage("")
+    }
     const validateSubmit = useCallback(() => {
         if (email === null) {
             updateMessage(
-                "Please put in your email so we can keep you updated on the project."
+                "Please enter your email."
             )
         } else if (
             /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) ===
             false
         ) {
-            updateMessage("Please enter a proper email.")
+            updateMessage("Please enter a valid email.")
         } else if (files === null) {
-            updateMessage("Please upload something.")
+            updateMessage("Please upload a photo or video.")
         } else {
             updateMessage(`This part doesn't work yet! U goof`)
             //handleSubmit();
         }
     })
-    const colorChange = useCallback((container, entering) => {
-        let tl = new TimelineMax({ paused: false })
-        let duration = 0.2
-        let text = container.childNodes[0]
 
-        if (entering) {
-            tl.to(container, duration, {
-                backgroundColor: gold
-            }).to(
-                text,
-                duration,
-                {
-                    color: black
-                },
-                0
-            )
-        } else {
-            tl.to(container, duration, {
-                backgroundColor: black
-            }).to(
-                text,
-                duration,
-                {
-                    color: gold
-                },
-                0
-            )
-        }
-    })
     return (
         <div className={props.className}>
             <form className="flexbox">
                 <div className="email">
                     <div className="labelContainer">
                         <input
+                            onClick={clearMessage}
                             onChange={setEmail.bind(this)}
                             type="text"
                             placeholder="Enter Email"
@@ -134,15 +114,15 @@ const FormContainer = props => {
                     </div>
                 </div>
                 <div
-                    className="file"
-                    onMouseEnter={() => colorChange(fileBox, true)}
-                    onMouseLeave={() => colorChange(fileBox, false)}
+                    className={files ? "fileActive" : "file"}
                 >
                     <input
                         ref={div => (fileInput = div)}
+                        onClick={clearMessage}
                         onChange={setFile.bind(this)}
                         id="files"
                         type="file"
+                        accept = "video/*|image/*"
                         multiple
                     />
                     <div
@@ -152,7 +132,7 @@ const FormContainer = props => {
                         <div className="label">{fileLabel}</div>
                     </div>
                     {files != null ? (
-                        <X onClick={() => updateFile(null)} classname="x" />
+                        <X onClick={xClick} classname="x" />
                     ) : (
                         ""
                     )}
@@ -160,8 +140,6 @@ const FormContainer = props => {
                 <div
                     onClick={() => validateSubmit()}
                     className="submit"
-                    onMouseEnter={() => colorChange(submitBox, true)}
-                    onMouseLeave={() => colorChange(submitBox, false)}
                 >
                     <div
                         ref={div => (submitBox = div)}
@@ -237,7 +215,7 @@ const SubmissionPage = props => {
         <div ref={div => (subcontainer = div)} className="submissionContainer">
             <div className="header">
                 <div>
-                    <h1>We Want To Hear Your Voice</h1>
+                    <h1>We Want<br/> To Hear<br/> Your<br/> Voice</h1>
                 </div>
             </div>
             <div className="text">

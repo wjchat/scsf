@@ -1,6 +1,6 @@
 @import "global";
 
-$formFontSize: 2vw;
+$formFontSize: 1.7vw;
 
 .flexbox {
     //dont change styles of flexbox here. just used as an indentifier. to change flexbox styles go to submission.scss
@@ -9,8 +9,9 @@ $formFontSize: 2vw;
         @include subAnimate;
         margin: 2% 0; //adjust space between boxes
         width: 100%;
-        height: $formFontSize * 2;
+        height: $formFontSize * 2.3;
         position: relative;
+        top: 2%;
         border: solid $goldX 1px;
         cursor: pointer;
         border-radius: 1px;
@@ -18,10 +19,13 @@ $formFontSize: 2vw;
             background: transparent;
             border: none;
             width: 100%;
-            color: white;
+            color: $greyX;
         }
     }
+
     .file {
+        background-color: black;
+        color: $goldX;
         position: relative;
         input {
             position: absolute;
@@ -35,6 +39,29 @@ $formFontSize: 2vw;
             /* chromes and blink button */
             cursor: pointer;
         }
+        transition: all .25s;
+    }
+    .file:hover {
+      background-color: $goldX;
+      color: black
+    }
+    .fileActive {
+      background-color: $goldX;
+      color: black;
+      position: relative;
+      input {
+          position: absolute;
+          top: 0;
+          height: 100%;
+          width: 100%;
+          cursor: pointer;
+          opacity: 0;
+      }
+      input[type="file"]::-webkit-file-upload-button {
+          /* chromes and blink button */
+          cursor: pointer;
+      }
+      transition: all .25s;
     }
     .labelContainer {
         //control text style from here
@@ -47,26 +74,40 @@ $formFontSize: 2vw;
         .label {
             display: inline-block;
             text-align: center;
-            color: $goldX;
         }
     }
+
+    .submit {
+      background-color: black;
+      color: $goldX;
+      transition: all .25s;
+    }
+    .submit:hover {
+      background-color: $goldX;
+      color: black
+    }
+ 
     .email {
-        padding-left: 5%;
-        padding-right: 5%;
+        cursor: default;
         border-color: $greyX;
         & input:focus::placeholder {
             color: transparent;
         }
         input{
             height: 100%;
+            text-indent: 1.5vw;
         }
     }
+    .email:focus {
+      border-color: $goldX;
+    }
+
     .x {
         position: absolute;
-        top: 0;
-        bottom: 0;
+        top: 35%;
+        height: 30%;
         right: -1 * $formFontSize * 1.5;
-        transform: translateX(0px);
+        transform: translateX(-10px);
         cursor: pointer;
         filter: blur(4px);
         & > div {
@@ -74,14 +115,21 @@ $formFontSize: 2vw;
             flex-direction: column;
             justify-content: center;
             height: 100%;
-            font-family: $sans;
-            color: $goldX;
+            font-family: helvetica;
+            color: $greyX;
             padding:0px 5px;
+            transition: all .25s;
         }
+    }
+    .x:hover {
+      div {
+        color: $goldX;
+      }
     }
     &>.message{
         display: block;
         @include bodyText;
+        color: $greyX;
         text-align: center;
         display: flex;
         flex-direction: row;

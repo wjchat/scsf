@@ -1,19 +1,21 @@
 $bodyText: 1.18vw;
 $bodyLineHeight: 130%;
 $biggerBodyText: 1.3vw;
-$giantText: 5.5vw;
-$largeText: 4vw; //so close so far on landing page & counter
-$serrif: "Garamond", serif;
-$sans: "Kanit", "Helvetica", sans-serif;
+$giantText: 6vw;
+$largeText: 4.8vw; //so close so far on landing page & counter
+$displayFontWeight: 700;
+// $serrif: program;
+$serrif: tasman;
+$sans: balboa, sans-serif;
 
 $goldX: #d3c371;
-$greyX: #808080;
+$greyX: #b0b0b0;
 
 $background: #000000;
 $mobile-width: 450px;
 $minHeight: 350px;
 
-$padding: 22%;
+$padding: 17.5%;
 @mixin subAnimate{
     opacity: .0;
     filter: blur(4px);
@@ -23,7 +25,7 @@ $padding: 22%;
 @mixin border{
     height: .2vw;
     background-color: $goldX;
-    border-radius: 2px;
+    // border-radius: 1px;
 }
 @mixin bodyText{
     font-size: $bodyText;

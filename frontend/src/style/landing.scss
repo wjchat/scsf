@@ -7,7 +7,7 @@ $landingGrey: #202121;
     height: 100vh;
     min-height: $minHeight;
     display: grid;
-    grid-template-rows: 15% 70% auto; //adjust these for horizontal spacing
+    grid-template-rows: 1fr 65% 1fr; //adjust these for horizontal spacing
     grid-template-columns: 1fr 53% 1fr; //adjust these for vertical space
     grid-template-areas:
         ". title ."
@@ -23,12 +23,24 @@ $landingGrey: #202121;
             left: 0;
             right: 0;
             margin: auto; //centers image
-            max-width: 20%; //adjust size of logo
+            max-width: 15%; //adjust size of logo
             cursor: pointer;
             @include subAnimate;
         }
+        .about {
+          position: relative;
+          width: 6.7%;
+          // background-color: red;
+          top: 39%;
+          left: -45%;
+          color: $greyX;
+          font-size: $biggerBodyText;
+          margin: auto;
+          cursor: pointer;
+        }
     }
     & .left {
+        // background-color: red;
         grid-area: left;
         padding-left: $padding; //postition text horizontal (effects vertical)
         height: 100%;
@@ -45,12 +57,12 @@ $landingGrey: #202121;
             justify-content: space-around;
             height: 100%;
             font-size: $largeText;
-            margin-top: -3%; //position section vertically
+            margin-top: 2.3%; //position section vertically
             font-family: $sans;
             span {
                 //used these to stagger text
                 display: inline-block;
-                line-height: 0;
+                line-height: 0.5;
                 z-index: 2;
                 @include subAnimate
             }
@@ -58,10 +70,11 @@ $landingGrey: #202121;
         .grey {
             color: $landingGrey;
             z-index: 1;
-            margin-top: -5%; //position grey relative to gold
+            margin-top: -0.5%; //position grey relative to gold
         }
     }
     & .video {
+        // background-color: #080808;
         grid-area: video;
         display: flex;
         flex-direction: column;
@@ -77,17 +90,20 @@ $landingGrey: #202121;
         }
     }
     & .right {
+        // background-color: blue;
         grid-area: right;
         @include bodyText;
         width: 100%;
-        height: 100;
+        height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         text-align: right;
         padding-right: $padding;
         .top {
-            padding-left: 13%; //affects width of text
+            color: $greyX;
+            padding-left: 25%; //affects width of text
+            padding-top: 2.5%;
             p{
                 @include subAnimate;
             }
@@ -97,21 +113,24 @@ $landingGrey: #202121;
             h1 {
                 font-size: $largeText;
                 line-height: 0;
+                padding-bottom: 1.5%;
                 color: $goldX;
                 @include subAnimate;
                 font-family: $sans;
             }
             p {
-                margin-bottom: 30%; //adjust count vertically
+                margin-bottom: 15%; //adjust count vertically
                 line-height: 75%;
                 padding-right: 2%;
+                color: $greyX;
+                font-size: $biggerBodyText;
                 @include subAnimate;
             }
             .border {
                 position: absolute;
                 right: 0;
-                bottom: 15%; //position border vertically
-                width: 76%;
+                bottom: 4%; //position border vertically
+                width: 73%;
                 @include border;
             }
         }
@@ -122,10 +141,10 @@ $landingGrey: #202121;
         display: flex;
         justify-content: center;
         img {
-            max-width: 5%; //arrow size
+            max-width: 4%; //arrow size
             height: auto;
             position: absolute;
-            top: 10%;
+            top: 30%;
             left: 0;
             right: 0;
             margin: auto;
@@ -143,8 +162,8 @@ $landingGrey: #202121;
             p {
                 position: relative;
                 @include bodyText;
-                color: white;
-                margin-bottom: 13%; //position text from bottom of screen
+                color: $greyX;
+                margin-bottom: 27%; //position text from bottom of screen
                 filter: blur(3px);
                 opacity: 0;
                 transform: translatex(-5px);
