@@ -1,7 +1,8 @@
 @import "global";
 
 
-$landingGrey: #202121;
+// $landingGrey: #202121;
+$landingGrey: #1f1c10;
 
 .landing {
     height: 100vh;
@@ -102,7 +103,7 @@ $landingGrey: #202121;
         padding-right: $padding;
         .top {
             color: $greyX;
-            padding-left: 25%; //affects width of text
+            padding-left: 21%; //affects width of text
             padding-top: 2.5%;
             p{
                 @include subAnimate;

@@ -16,6 +16,7 @@
     "gatsby-transformer-sharp": "^2.4.6",
     "gh-pages": "^2.2.0",
     "gsap": "^3.2.6",
+    "map-cache": "^0.2.2",
     "node-sass": "^4.13.1",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
@@ -37,7 +38,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-      "deploy": "gatsby build --prefix-paths && gh-pages -d public"
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
   },
   "repository": {
     "type": "git",
