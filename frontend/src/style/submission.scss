@@ -1,0 +1,101 @@
+@import "global";
+
+.submissionContainer {
+    // background-color: pink;
+    color: white;
+    height: 100vh;
+    min-height: $minHeight;
+    display: grid;
+    grid-template-rows: 10% 60% 30%;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "header form"
+        "header form"
+        "text ."
+        ;
+    padding: 0% 6%;
+    .arrowUp{
+        grid-row: 1;
+        grid-column-start: header;
+        grid-column-end: form;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        z-index: 5;
+        img{
+            max-width: 2.8%;
+            margin: 0;
+            margin: auto;
+            transform: rotate(180deg);
+            box-sizing: content-box;
+            padding: 5px;
+            cursor: pointer;
+        }
+    }
+    & .header {
+        // background-color: yellow;
+        grid-area: header;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        div{
+            display: flex;
+            justify-content: flex-end;
+        }
+        h1 {
+            color: $goldX;
+            font-size: $giantText;
+            text-align: right;
+            width: 100%;
+            line-height: 90%;
+            font-family: $sans;
+        }
+    }
+    & .text {
+        // background-color: blue;
+        grid-area: text;
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        width: 86%;
+        left: 14%;
+        .border{
+            position: absolute;
+            margin-top: 2%;
+            width: 100%;
+            left: 0%;
+            top: 0;
+            @include border;
+        }
+        p{
+            @include bodyText;
+            color: $greyX;
+            width: 40%;
+            margin-top: 4%;
+        }
+    }
+    & .formContainer {
+        // background-color: pink;
+        grid-area: form;
+        display: flex;
+        justify-content: center;
+        .flexbox{
+            position: relative;
+            left: 6%;
+            // background-color: orange;
+            display: inline-block;
+            height: auto;
+            width: 57.5%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            //go to form items for each button's specific stylings
+        }
+    }
+    .animateUp{
+        opacity: 0;
+        filter: blur(4px);
+        transform: translateY(30px);
+    }
+}

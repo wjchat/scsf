@@ -1,0 +1,55 @@
+$bodyText: 1.18vw;
+$bodyLineHeight: 130%;
+$biggerBodyText: 1.3vw;
+$giantText: 6vw;
+$largeText: 4.8vw; //so close so far on landing page & counter
+$displayFontWeight: 700;
+// $serrif: program;
+$serrif: tasman;
+$sans: balboa, sans-serif;
+
+$goldX: #d3c371;
+$greyX: #b0b0b0;
+
+$background: #000000;
+$mobile-width: 450px;
+$minHeight: 350px;
+
+$padding: 17.5%;
+@mixin subAnimate{
+    opacity: .0;
+    filter: blur(4px);
+    transform: translateX(-10px);
+}
+
+@mixin border{
+    height: .2vw;
+    background-color: $goldX;
+    // border-radius: 1px;
+}
+@mixin bodyText{
+    font-size: $bodyText;
+    line-height: $bodyLineHeight;
+    color: white;
+    font-family: $serrif;
+}
+
+@mixin mobile {
+  @media (max-width: #{$mobile-width}) {
+    @content;
+  }
+}
+
+body{
+    background-color: $background;
+}
+
+//scrollbars are tacky
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE and Edge */
+body {
+  -ms-overflow-style: none;
+}

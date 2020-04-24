@@ -1,0 +1,188 @@
+@import "global";
+
+
+$landingGrey: #202121;
+$sectionHeight: 32vw;
+.landing {
+    height: 100vh;
+    min-height: $minHeight;
+    display: grid;
+    grid-template-rows: 1fr 65% 1fr; //adjust these for horizontal spacing
+    grid-template-columns: 1fr 53% 1fr; //adjust these for vertical space
+    grid-template-areas:
+        ". title ."
+        "left video right"
+        ". bottom .";
+    & .title {
+        grid-area: title;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        &>div{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        .logo {
+            max-width: 20%; //adjust size of logo
+            cursor: pointer;
+            margin: 0;
+        }
+        .about {
+          position: relative;
+          width: 6.7%;
+          // background-color: red;
+          top: 39%;
+          left: -45%;
+          color: $greyX;
+          font-size: $biggerBodyText;
+          margin: auto;
+          cursor: pointer;
+        }
+    }
+    & .left {
+        // background-color: red;
+        grid-area: left;
+        padding-left: $padding; //postition text horizontal (effects vertical)
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        h1 {
+            color: $goldX;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            height: $sectionHeight;
+            font-size: $largeText;
+            font-family: $sans;
+            margin: 0;
+            span {
+                //used these to stagger text
+                display: inline-block;
+                line-height: 0.5;
+                z-index: 2;
+            }
+        }
+        .grey {
+            color: $landingGrey;
+            z-index: 1;
+            margin-top: -0.5%; //position grey relative to gold
+        }
+    }
+    & .video {
+        // background-color: #080808;
+        grid-area: video;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        
+        video {
+            object-fit: cover;
+            height: auto;
+            max-width: 100%;
+            cursor: pointer;
+
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+    & .right {
+        // background-color: blue;
+        grid-area: right;
+        @include bodyText;
+        width: 100%;
+        text-align: right;
+        padding-right: $padding;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        &>div{
+            height: $sectionHeight;
+        }
+        .top {
+            color: $greyX;
+            padding-left: 25%; //affects width of text
+            padding-top: 2.5%;
+            p{
+            }
+        }
+        .bottomRight {
+            position: relative;
+            h1 {
+                font-size: $largeText;
+                color: $goldX;
+                font-family: $sans;
+                margin: 0;
+            }
+            p {
+                line-height: 75%;
+                padding-right: 2%;
+                color: $greyX;
+                font-size: $biggerBodyText;
+                margin: 0;
+                padding-bottom: 20px; //use absolute (now %) positioning
+            }
+            .border {
+                position: absolute;
+                right: 0;
+                bottom: 0; //position border vertically
+                width: 73%;
+                @include border;
+            }
+        }
+    }
+    & .bottom {
+        grid-area: bottom;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        img {
+            max-width: 4%; //arrow size
+            height: auto;
+            position: absolute;
+            top: 30%;
+            left: 0;
+            right: 0;
+            margin: auto;
+            cursor: pointer;
+            box-sizing: content-box;
+            padding: 10px;
+        }
+        .shimmerBox {
+            display: block;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            p {
+                position: relative;
+                @include bodyText;
+                color: $greyX;
+                margin-bottom: 27%; //position text from bottom of screen
+                filter: blur(3px);
+                opacity: 0;
+                transform: translatex(-5px);
+            }
+        }
+    }
+    .fromLeft{
+        @include subAnimate;
+    }
+    .video .fromLeft{
+        opacity: 1;
+        filter: blur(0px);
+        transform: translateX(0px);
+    }
+}
+
+.fromBottom{
+    &> .fromSub{
+        opacity: 0;
+        filter: blur(4px);
+        transform: translateY(-30px);
+    }
+}

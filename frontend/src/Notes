@@ -1,0 +1,38 @@
+Oh hey Will.
+
+Changes as of 4/22/20
+--------------------------------
++ Near pixel perfect CSS (finalized)
+    + Body texts will need adjustment after typeface and copy finalized
+    + Could not get the email input to highlight :(
++ Changed body font to something more readable for now
+    + Other possible option is commented out in global SCSS
++ X Animation complete
++ Loading screen "enter" font changed
++ Edited upload error messages to be one line
++ Got rid of email input deadzone
++ Upload button now stays highlighted when file selected
++ $greyX now lighter
++ Matte logo and arrow match new $greyX
++ Upload form now only accepts video or image files
++ Turned looping off on video for now
+
+
+Outstanding Issues (Not saying you gotta do all this yourself, just thought it'd be helpful to keep track)
+---------------------------------
++ Email input highlight
++ Video starts again after pausing when you first load in
+    + This has to do with the function in place to handle pausing when video player is clicked
+    + React-Player could be an easy solution to this
++ Copy finalization
++ Body typeface finalization 
++ Resizing
++ Mobile 
+
+
+Extras 
+---------------
++ If adobe fonts dont work initially try pasting this into either the html head or layout head
+    + <link rel="stylesheet" href="https://use.typekit.net/fck3ywu.css"/>
++ Reccommend to Yago to start video with heavy black
++ Reccommend to Yago to not end video with full black screen to avoid page looking empty
