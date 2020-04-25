@@ -1,7 +1,7 @@
 @import "global";
 
 
-$landingGrey: #202121;
+$landingGrey: #1f1c10;
 $sectionHeight: 32vw;
 .landing {
     height: 100vh;
@@ -25,20 +25,9 @@ $sectionHeight: 32vw;
             justify-content: center;
         }
         .logo {
-            max-width: 20%; //adjust size of logo
+            max-width: 15%; //adjust size of logo
             cursor: pointer;
             margin: 0;
-        }
-        .about {
-          position: relative;
-          width: 6.7%;
-          // background-color: red;
-          top: 39%;
-          left: -45%;
-          color: $greyX;
-          font-size: $biggerBodyText;
-          margin: auto;
-          cursor: pointer;
         }
     }
     & .left {
@@ -50,6 +39,7 @@ $sectionHeight: 32vw;
         flex-direction: column;
         justify-content: center;
         h1 {
+            // background-color: red;
             color: $goldX;
             display: flex;
             flex-direction: column;
@@ -57,30 +47,30 @@ $sectionHeight: 32vw;
             height: $sectionHeight;
             font-size: $largeText;
             font-family: $sans;
-            margin: 0;
+            margin-top: 13%;
             span {
                 //used these to stagger text
                 display: inline-block;
-                line-height: 0.5;
+                line-height: 1;
                 z-index: 2;
             }
         }
         .grey {
             color: $landingGrey;
             z-index: 1;
-            margin-top: -0.5%; //position grey relative to gold
+            margin-top: -2.1%; //position grey relative to gold
         }
     }
     & .video {
-        // background-color: #080808;
+        // background-color: pink;
         grid-area: video;
         display: flex;
         flex-direction: column;
         justify-content: center;
         
         video {
-            object-fit: cover;
             height: auto;
+            max-height: 100%;
             max-width: 100%;
             cursor: pointer;
 
@@ -95,19 +85,21 @@ $sectionHeight: 32vw;
         @include bodyText;
         width: 100%;
         text-align: right;
-        padding-right: $padding;
+        padding-right: $padding + 1%;
         height: 100%;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-around;
         &>div{
             height: $sectionHeight;
         }
         .top {
             color: $greyX;
             padding-left: 25%; //affects width of text
-            padding-top: 2.5%;
+            padding-top: 0%;
+            margin-top: -10%;
             p{
+              margin-bottom: 15%;
             }
         }
         .bottomRight {
@@ -116,20 +108,19 @@ $sectionHeight: 32vw;
                 font-size: $largeText;
                 color: $goldX;
                 font-family: $sans;
-                margin: 0;
+                margin-top: 70%;
+                margin-bottom: -2.5%;
             }
             p {
                 line-height: 75%;
-                padding-right: 2%;
                 color: $greyX;
                 font-size: $biggerBodyText;
-                margin: 0;
-                padding-bottom: 20px; //use absolute (now %) positioning
+
             }
             .border {
                 position: absolute;
-                right: 0;
-                bottom: 0; //position border vertically
+                left: 27%;
+                bottom: -56%; //position border vertically
                 width: 73%;
                 @include border;
             }
@@ -144,7 +135,7 @@ $sectionHeight: 32vw;
             max-width: 4%; //arrow size
             height: auto;
             position: absolute;
-            top: 30%;
+            top: 40%;
             left: 0;
             right: 0;
             margin: auto;

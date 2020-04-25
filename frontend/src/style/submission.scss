@@ -15,6 +15,8 @@
         ;
     padding: 0% 6%;
     .arrowUp{
+        position: relative;
+        top: 20%;
         grid-row: 1;
         grid-column-start: header;
         grid-column-end: form;
@@ -24,7 +26,7 @@
         justify-content: center;
         z-index: 5;
         img{
-            max-width: 2.8%;
+            max-width: 2.5%;
             margin: 0;
             margin: auto;
             transform: rotate(180deg);
@@ -44,6 +46,8 @@
             justify-content: flex-end;
         }
         h1 {
+            position: relative;
+            top: -15%;
             color: $goldX;
             font-size: $giantText;
             text-align: right;
@@ -60,6 +64,7 @@
         position: relative;
         width: 86%;
         left: 14%;
+        top: -13.5%;
         .border{
             position: absolute;
             margin-top: 2%;
@@ -83,6 +88,7 @@
         .flexbox{
             position: relative;
             left: 6%;
+            margin-top: 39.75%;
             // background-color: orange;
             display: inline-block;
             height: auto;

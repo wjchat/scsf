@@ -67,7 +67,7 @@ const FormContainer = props => {
                 updateFileLabel(name)
             }
         } else {
-            updateFileLabel("Upload File")
+            updateFileLabel("Choose File")
         }
     },[files])
 
@@ -200,9 +200,9 @@ const SubmissionPage = props => {
             </div>
             <div className="text animateUp">
                 <div className="border"></div>
-                <p>Show us what you see and tell us how you feel.</p>
+                <p>Show us what you see<br/> and tell us how you feel.</p>
                 <p>
-                    We’ll be taking the videos submitted to create a living
+                    We’ll be taking the videos and images submitted to create a living
                     audio visual patchwork for and by all of us.
                 </p>
             </div>

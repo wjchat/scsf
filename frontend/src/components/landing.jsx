@@ -57,8 +57,7 @@ const Right = props => {
            <div>
             <div className="top">
                 <p className = {props.animateClass}>
-                    In a time of unprecedented devastation,
-                    everybody has a story to tell.
+                    One pandemic,<br/>seven billion stories to tell.
                 </p>
                 <p className = {props.animateClass}>
                     Matte Projects believes your experience needs to be heard.
