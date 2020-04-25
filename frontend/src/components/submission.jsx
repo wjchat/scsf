@@ -172,7 +172,6 @@ const SubmissionPage = props => {
             if(event.deltaY < 0 && canAnimate){
                 handleClick();
                 canAnimate = false;
-                console.log('o')
             }
         });
         
