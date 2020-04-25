@@ -77,6 +77,7 @@ const Vid = props => {
     let video
     useEffect(()=>{
     let vidObject = video 
+    vidObject.currentTime = props.videoTime
         if(props.view === "firstMain"){      
             setTimeout(()=>{
                 vidObject.play();
@@ -262,6 +263,8 @@ const Main = props => {
         })
     const handleClick = () =>{
         transition(); 
+        let vid = animate.getElementsByTagName('video')[0];
+        props.updateTime(Math.floor(vid.currentTime))
     }
     return (
         <div ref={div=>animate=div} className={`landing ${props.animateClass}`}>
@@ -275,7 +278,11 @@ const Main = props => {
                     </div>
             </div>
             <Left animateClass = {props.animateClass} className="left fromSub" />
-            <Vid animateClass = {props.animateClass}  view = {props.view} className="video fromSub" />
+            <Vid 
+            videoTime = {props.videoTime}
+            animateClass = {props.animateClass}  
+            view = {props.view} 
+            className="video fromSub" />
             <Right animateClass = {props.animateClass}  className="right fromSub" />
             <Bottom animateClass = {props.animateClass} onClick = {()=>handleClick()} className="bottom fromSub" />
         </div>

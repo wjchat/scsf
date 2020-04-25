@@ -136,6 +136,8 @@ const OpeningAnimation = props => {
 
 const IndexPage = () => {
     const [view, updateView] = useState("opening")
+    const [videoTime, updateTime] = useState(0);
+
 
     return (
         <Layout>
@@ -145,10 +147,16 @@ const IndexPage = () => {
                 {view==="opening" ? <OpeningAnimation
                 onClick = {(phase)=>updateView(phase)}
                   /> : ""}
-                  {view==="opening" || view === "firstMain" ?  <Landing animateClass = "fromLeft" view = {view}
+                  {view==="opening" || view === "firstMain" ?  <Landing
+                  videoTime = {videoTime}
+                  updateTime = {(time)=>updateTime(time)}
+                  animateClass = "fromLeft" view = {view}
                   onClick = {(phase)=>updateView(phase)}
                     /> : ""}
-                  {view === "main" ? <Landing view = {view}
+                  {view === "main" ? <Landing 
+                  videoTime = {videoTime}
+                  updateTime = {(time)=>updateTime(time)}
+                   view = {view}
                   animateClass = "fromBottom"
                   onClick = {(phase)=>updateView(phase)}
                    /> : ""}
