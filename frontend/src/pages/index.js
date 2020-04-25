@@ -4,6 +4,7 @@ import SEO from "../components/seo"
 
 import Landing from "../components/landing.jsx"
 import SubmissionPage from "../components/submission.jsx"
+import Mobile from '../components/mobile.jsx'
 import Logo from "../images/Matte.svg"
 import { TimelineMax, TweenLite } from "gsap"
 
@@ -166,7 +167,7 @@ const IndexPage = () => {
             </div>
             
             <div className = 'mobileContainer'>
-                <div>Mobile isn't ready yet. Make ur screen bigger</div>
+                <Mobile />
             </div>
             
         </Layout>

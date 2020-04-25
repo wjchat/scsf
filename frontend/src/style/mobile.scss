@@ -1,0 +1,116 @@
+@import "global";
+
+$paddingSide: 10vw;
+.mobile{
+    color: $greyX;
+    .logoHeader{
+        position: fixed;
+        height: 10vh;
+        top: 0;
+        width: 100vw;
+        padding-top:5vh;
+        z-index: 100;
+        img{
+            max-height: 100%;
+        }
+    }
+    .firstView{
+        height: 60vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        video{
+            max-width: 100%;
+        }
+    }
+    .firstText{
+        padding: 40vh $paddingSide;
+        padding-bottom: 10vh;
+        display: flex;
+        &>h1{
+            width: 45%;
+            display: flex;
+            flex-direction: column;
+            color: $goldX;
+            font-family: $sans;
+            justify-content: space-around;
+        }
+        &>div{
+            width: 55%;
+            font-family: $serrif;
+        }
+    }
+    .animateThis{
+        span, p{
+            opacity: 0;
+            filter: blur(4px);
+            transform: translateX(-5px);
+        }
+    }
+    .count{
+        padding: 50vh $padding;
+        padding-bottom: 20vh;
+        width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 40vh;
+        .container{
+            border-top: solid $goldX 1px;
+            border-bottom: solid $goldX 1px;
+            overflow: hidden;
+            height: 0vw;
+            margin: auto;
+            width: 0vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            &>div{
+                margin: auto;
+                height: fit-content;
+                width: fit-content;
+            }
+        }
+        h1{
+            font-family: $sans;
+            font-size: 20vw;
+            line-height: 50%;
+            padding-top: 10vw; //half of font size
+            color: $goldX;
+        }
+        p{
+            font-family: $serrif;
+        }
+    }
+    .secondText{
+        padding-top: 40vh;
+        padding-bottom: 40vh;
+        &>h1{
+            height: 70vw;
+            justify-content: space-around;
+        }
+        &>div{
+            height: 76.3vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+    }
+    .mobileForm{
+        width: 22.5vw;
+        margin: auto;
+        transform: scale(3.5); //dude im CHEATING
+        margin-bottom: 10vh;
+        .x{
+            display: none;
+        }
+    }
+}
+
+
+
+
+
+
+
