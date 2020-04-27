@@ -1,31 +1,56 @@
 @import "global";
 
-$paddingSide: 10vw;
+$paddingSide: 8vw;
+$bodyText: 4.5vw;
 .mobile{
     color: $greyX;
+    .firstView{
+        // background-color: blue;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        
+        video{
+          max-width: 100%;
+        }
+
+        .arrow {
+          // background-color: olive;
+          position: relative;
+          top: 30%;
+          height: 10%;
+          .arrowImg{
+            position: absolute;
+            left: 46%;
+            top: 30%;
+            max-width: 8%;
+            animation: arrowBounce 2s infinite ease-in-out;
+          }
+        }
+
+    }
+
     .logoHeader{
         position: fixed;
         height: 10vh;
         top: 0;
-        width: 100vw;
+        left: 36.5%;
+        width: 27vw;
         padding-top:5vh;
         z-index: 100;
-        img{
+        .logoImg{
+            background-color: #060608;
             max-height: 100%;
         }
     }
-    .firstView{
-        height: 60vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        video{
-            max-width: 100%;
-        }
-    }
+    
     .firstText{
-        padding: 40vh $paddingSide;
-        padding-bottom: 10vh;
+        // background-color: red;
+
+        padding: 10vh $paddingSide;
+        padding-bottom: 0vh;
         display: flex;
         &>h1{
             width: 45%;
@@ -33,13 +58,18 @@ $paddingSide: 10vw;
             flex-direction: column;
             color: $goldX;
             font-family: $sans;
-            justify-content: space-around;
+            align-items:flex-start;
         }
         &>div{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            font-size: $bodyText;
             width: 55%;
             font-family: $serrif;
         }
     }
+
     .animateThis{
         span, p{
             opacity: 0;
@@ -47,9 +77,11 @@ $paddingSide: 10vw;
             transform: translateX(-5px);
         }
     }
+
     .count{
-        padding: 50vh $padding;
-        padding-bottom: 20vh;
+        // background-color: blue;
+        padding: 22vh $padding;
+        padding-bottom: 0vh;
         width: 100%;
         text-align: center;
         display: flex;
@@ -76,35 +108,70 @@ $paddingSide: 10vw;
             font-family: $sans;
             font-size: 20vw;
             line-height: 50%;
-            padding-top: 10vw; //half of font size
+            padding-top: 11vw; //half of font size
             color: $goldX;
         }
         p{
             font-family: $serrif;
+            font-size: $bodyText
         }
     }
+
     .secondText{
-        padding-top: 40vh;
-        padding-bottom: 40vh;
+        // background-color: pink;
+        padding-top: 4vh;
+        padding-bottom: 25vh;
+        display: flex;
         &>h1{
             height: 70vw;
             justify-content: space-around;
         }
         &>div{
+            font-size: $bodyText;
             height: 76.3vw;
+            width: 55%;
             display: flex;
             flex-direction: column;
-            justify-content: space-around;
+            justify-content: flex-start;
         }
     }
+    
     .mobileForm{
+
+        div {
+          border-radius: 0.1;
+        }
+
+        .email {
+          margin-bottom: 1vh;
+        }
+
+        .file {
+          margin-bottom: 1vh;
+        }
+
+        .fileActive {
+          margin-bottom: 1vh;
+        }
+
+        .submit {
+          margin-bottom: 0.5vh;
+        }
+
+        // background-color: orange;
         width: 22.5vw;
         margin: auto;
         transform: scale(3.5); //dude im CHEATING
-        margin-bottom: 10vh;
+        margin-bottom: 2vh;
         .x{
             display: none;
         }
+    }
+
+    @keyframes arrowBounce {
+      0% { top: 30% }
+      50% { top: 15% }
+      100% { top: 30% }
     }
 }
 

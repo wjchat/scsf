@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import logo from "../images/Matte.svg"
+import arrow from "../images/Arrow.svg"
 import vid from "../images/video.mp4"
 import gsap, { Power2 } from "gsap"
 import Form from "./form.jsx";
@@ -7,6 +8,48 @@ import Form from "./form.jsx";
 import "../style/mobile.scss"
 
 
+const Arrow = props => {
+  let animate
+  let duration = 0.2
+  const [showing, updateShowing] = useState(true)
+  const appear = () => {
+      gsap.to(animate, duration, {
+          opacity: 1,
+          filter: "blur(0px)",
+          y: 0,
+          ease: Power2.easeOut
+      })
+  }
+  const disappear = () => {
+      gsap.to(animate, duration, {
+          opacity: 0,
+          filter: "blur(4px)",
+          y: -20,
+          ease: Power2.easeIn
+      })
+  }
+  useEffect(() => {
+      window.addEventListener("wheel", event => {
+          if (event.deltaY > 0) {
+              updateShowing(false)
+          } else {
+              updateShowing(true)
+          }
+      })
+  }, [])
+  useEffect(() => {
+      if (showing === true) {
+          appear()
+      } else {
+          disappear()
+      }
+  })
+  return (
+      <div ref={arrow => (animate = arrow)} className="arrow">
+          <img src={arrow} alt="" className="arrowImg"/>
+      </div>
+  )
+}
 const SwooshIn = props => {
     let animate
     useEffect(() => {
@@ -14,7 +57,7 @@ const SwooshIn = props => {
             if (animate != null) {
                 if (
                     animate.getBoundingClientRect().y <
-                    window.innerHeight / 10
+                    window.innerHeight / 1.56
                 ) {
                     props.trigger(true)
                 }
@@ -70,13 +113,14 @@ const FirstText = props => {
                 filter: "blur(0px)",
                 x: 0,
                 ease: Power2.easeOut,
-            }, -1 * duration * .3)
+                // delay: 0.7
+            }, 1 * duration * .3)
             tl.staggerTo(text, duration, {
                 opacity: 1,
                 filter: "blur(0px)",
                 x: 0,
                 ease: Power2.easeOut,
-            }, -1 * duration * .3, `-=${duration * 1.5}`)
+            }, 1 * duration * .3, `-=${duration * 1.5}`)
         }
     }, [animate, trigger])
     return (
@@ -89,7 +133,7 @@ const FirstText = props => {
                     <span>Far</span>
                 </h1>
                 <div className="animateThis">
-                    <p>One pandemic, seven billion stories to tell.</p>
+                    <p>One pandemic,<br/> seven billion stories to tell.</p>
                     <p>
                         Matte Projects believes your experience needs to be
                         heard.
@@ -115,14 +159,14 @@ const SecondText = props => {
                 filter: "blur(0px)",
                 x: 0,
                 ease: Power2.easeOut,
-            }, -1 * duration * .3)
+            }, 1 * duration * .3)
             
             tl.staggerTo(text, duration, {
                 opacity: 1,
                 filter: "blur(0px)",
                 x: 0,
                 ease: Power2.easeOut,
-            }, -1 * duration * .3, `-=${duration * 1.5}`)
+            }, 1 * duration * .3, `-=${duration * 1.5}`)
         }
     }, [animate, trigger])
     return (
@@ -137,7 +181,7 @@ const SecondText = props => {
                     <span>Voice</span>
                 </h1>
                 <div className="animateThis">
-                    <p>Show us what you see and tell us how you feel.</p>
+                    <p>Show us what you see<br/> and tell us how you feel.</p>
                     <p>We’ll be taking the videos and images submitted to create a living audio visual patchwork for and by all of us.</p>
                 </div>
 
@@ -183,10 +227,15 @@ const LogoHeader = props => {
     })
     return (
         <div ref={div => (animate = div)} className="logoHeader">
-            <img src={logo} alt="" />
+            <img 
+              src={logo} alt="" 
+              className="logoImg"
+              onClick = {()=>window.open("http://www.matteprojects.com")}
+            />
         </div>
     )
 }
+
 const MobileContainer = props => {
     return (
         <div className="mobile">
@@ -196,6 +245,7 @@ const MobileContainer = props => {
                     <source src={vid} type="video/mp4" />
                     <source src={vid} type="video/ogg" />
                 </video>
+                <Arrow/>
             </div>
             <FirstText />
             <Count />
