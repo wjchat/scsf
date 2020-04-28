@@ -3,6 +3,7 @@
 $paddingSide: 8vw;
 $bodyText: 4.5vw;
 .mobile{
+    overflow-x: hidden;
     color: $greyX;
     .firstView{
         // background-color: blue;
@@ -19,12 +20,12 @@ $bodyText: 4.5vw;
         .arrow {
           // background-color: olive;
           position: relative;
-          top: 30%;
+          top: 15%;
           height: 10%;
           .arrowImg{
             position: absolute;
             left: 46%;
-            top: 30%;
+            top: 20%;
             max-width: 8%;
             animation: arrowBounce 2s infinite ease-in-out;
           }
@@ -120,7 +121,7 @@ $bodyText: 4.5vw;
     .secondText{
         // background-color: pink;
         padding-top: 4vh;
-        padding-bottom: 25vh;
+        padding-bottom: 22vh;
         display: flex;
         &>h1{
             height: 70vw;
@@ -150,6 +151,16 @@ $bodyText: 4.5vw;
           margin-bottom: 1vh;
         }
 
+        .file:hover {
+          background-color: #060608;
+          color: $goldX
+        }
+
+        .file:active {
+          background-color: $goldX;
+          color: #060608;
+        }
+
         .fileActive {
           margin-bottom: 1vh;
         }
@@ -158,20 +169,35 @@ $bodyText: 4.5vw;
           margin-bottom: 0.5vh;
         }
 
+        .submit:hover {
+          background-color: #060608;
+          color: $goldX
+        }
+
+        .submit:active {
+          background-color: $goldX;
+          color: #060608;
+        }
+
+        .message {
+          left: 0%;
+          top: 110%;
+        }
+
         // background-color: orange;
         width: 22.5vw;
         margin: auto;
         transform: scale(3.5); //dude im CHEATING
-        margin-bottom: 2vh;
+        margin-bottom: 6vh;
         .x{
             display: none;
         }
     }
 
     @keyframes arrowBounce {
-      0% { top: 30% }
-      50% { top: 15% }
-      100% { top: 30% }
+      0% { top: 20% }
+      50% { top: 5% }
+      100% { top: 20% }
     }
 }
 

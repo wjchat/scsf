@@ -6,20 +6,20 @@
     height: 100vh;
     min-height: $minHeight;
     display: grid;
-    grid-template-rows: 10% 60% 30%;
-    grid-template-columns: 1fr 1fr;
     grid-template-areas:
+        "top top"
         "header form"
-        "header form"
-        "text ."
+        "text formBumper"
+        "bottom bottom"
         ;
+    grid-template-rows: 15% 45% 20% 20%;
+    grid-template-columns: 1fr 1fr;
     padding: 0% 6%;
     .arrowUp{
+        // background-color: olive;
         position: relative;
-        top: 20%;
-        grid-row: 1;
-        grid-column-start: header;
-        grid-column-end: form;
+        top: 0%;
+        grid-area: top;
         height: 100%;
         width: 100%;
         display: flex;
@@ -38,16 +38,18 @@
     & .header {
         // background-color: yellow;
         grid-area: header;
+        height: 100%;
+        width: 100%;
         display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        div{
-            display: flex;
-            justify-content: flex-end;
-        }
+        flex-direction: row;
+        align-items: flex-end;
+        margin-bottom: 0;
         h1 {
-            position: relative;
-            top: -15%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            // background-color: red;
             color: $goldX;
             font-size: $giantText;
             text-align: right;
@@ -64,10 +66,10 @@
         position: relative;
         width: 86%;
         left: 14%;
-        top: -13.5%;
+        top: 0%;
         .border{
             position: absolute;
-            margin-top: 2%;
+            margin-top: 8%;
             width: 100%;
             left: 0%;
             top: 0;
@@ -77,20 +79,20 @@
             @include bodyText;
             color: $greyX;
             width: 40%;
-            margin-top: 4%;
+            margin-top: 10%;
         }
     }
     & .formContainer {
         // background-color: pink;
         grid-area: form;
         display: flex;
-        justify-content: center;
+        flex-direction: row;
+        align-items: flex-end;
         .flexbox{
-            position: relative;
-            left: 6%;
-            margin-top: 39.75%;
+            margin: 0;
+            margin-left: 27.25%;
+            margin-top: 50%;
             // background-color: orange;
-            display: inline-block;
             height: auto;
             width: 57.5%;
             display: flex;
@@ -103,5 +105,20 @@
         opacity: 0;
         filter: blur(4px);
         transform: translateY(30px);
+    }
+
+    .formBumper {
+      // background-color: green;
+      grid-area: formBumper;
+      height: 100%;
+      width: 100%;
+    }
+    
+    .botContain{
+      position: relative;
+      // background-color: aqua;
+      grid-area: bottom;
+      height: 100%;
+      width: 100%;
     }
 }

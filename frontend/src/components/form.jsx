@@ -150,8 +150,8 @@ const FormContainer = props => {
                         <div className="label">Submit</div>
                     </div>
                 </div>
-                <Message text={message} className="message" />
             </form>
+            <Message text={message} className="message" />
         </div>
     )
 }

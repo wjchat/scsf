@@ -50,13 +50,14 @@ const SubmissionPage = props => {
     }
     return (
         <div ref={div => (subcontainer = div)} className="submissionContainer">
-           <div className = "arrowUp animateUp"><img
-           onClick = {()=>handleClick()}
-             src={arrow} alt="return up"/></div>
+            <div className = "arrowUp animateUp">
+              <img
+                onClick = {()=>handleClick()}
+                src={arrow} alt="return up"
+              />
+            </div>
             <div className="header animateUp">
-                <div>
-                    <h1>We Want<br/> To Hear<br/> Your<br/> Voice</h1>
-                </div>
+                <h1>We Want<br/> To Hear<br/> Your<br/> Voice</h1>
             </div>
             <div className="text animateUp">
                 <div className="border"></div>
@@ -67,6 +68,8 @@ const SubmissionPage = props => {
                 </p>
             </div>
             <Form className="formContainer animateUp" />
+            <div className="formBumper"></div>
+            <div className="botContain"></div>
         </div>
     )
 }
