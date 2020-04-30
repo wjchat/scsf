@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/user-uploads",
+      "handler": "user-uploads.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/user-uploads/count",
+      "handler": "user-uploads.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/user-uploads/:id",
+      "handler": "user-uploads.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/user-uploads",
+      "handler": "user-uploads.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/user-uploads/:id",
+      "handler": "user-uploads.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/user-uploads/:id",
+      "handler": "user-uploads.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

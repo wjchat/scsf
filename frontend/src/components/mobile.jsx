@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from "react"
 import logo from "../images/Matte.svg"
 import arrow from "../images/Arrow.svg"
-import vid from "../images/video.mp4"
 import gsap, { Power2 } from "gsap"
 import Form from "./form.jsx";
+import {useStaticQuery, graphql} from 'gatsby'
 
 import "../style/mobile.scss"
+import axios from 'axios'
+import { CSSPlugin } from 'gsap/CSSPlugin'
 
+
+
+// Force CSSPlugin to not get dropped during build
+gsap.registerPlugin(CSSPlugin)
 
 const Arrow = props => {
   let animate
@@ -53,10 +59,11 @@ const Arrow = props => {
 const SwooshIn = props => {
     let animate
     useEffect(() => {
+        let animateOb = animate
         window.addEventListener("scroll", () => {
-            if (animate != null) {
+            if (animateOb != null) {
                 if (
-                    animate.getBoundingClientRect().y <
+                    animateOb.getBoundingClientRect().y <
                     window.innerHeight / 1.56
                 ) {
                     props.trigger(true)
@@ -73,26 +80,35 @@ const SwooshIn = props => {
 const Count = props=>{
     let animate;
     const [trigger, updateTrigger] = useState(false)
+    const [count, updateCount] = useState(0)
     useEffect(()=>{
         if(trigger === true){
+            let animateOb = animate
             let tl = gsap.timeline();
             let duration = .4;
-            tl.to(animate, duration,{
+            tl.to(animateOb, duration,{
                 width: "60vw",
                 ease: Power2.easeIn,
             })
-            tl.to(animate, duration, {
+            tl.to(animateOb, duration, {
                 y: "-20vw", // half the height increase. keeps it center
                 height: "40vw", //double the large text size
                 ease: Power2.easeOut,
             }, `-=.05`)
         }
     }, [animate, trigger])
+    useEffect(()=>{
+        if(props.count < 100){
+            updateCount(props.count)
+        } else{
+            updateCount('999+')
+        }
+    }, props.count)
     return(<SwooshIn trigger = {(newTrigger) => updateTrigger(newTrigger)}>
         <div className = "count">
            <div ref = {div=>animate=div} className = "container">
                <div>      
-                    <h1>641</h1>
+                    <h1>{count}</h1>
                     <p>stories told</p>
                </div>
            </div>
@@ -103,6 +119,7 @@ const FirstText = props => {
     let animate;
     const [trigger, updateTrigger] = useState(false)
     useEffect(() => {
+        console.log(trigger)
         if(trigger === true){
             let tl = gsap.timeline();
             let duration = .15
@@ -153,7 +170,6 @@ const SecondText = props => {
             let duration = .15
             let title = animate.getElementsByClassName("animateThis")[0].childNodes
             let text = animate.getElementsByClassName("animateThis")[1].childNodes
-            console.log(title, text)
             tl.staggerTo(title, duration, {
                 opacity: 1,
                 filter: "blur(0px)",
@@ -237,6 +253,18 @@ const LogoHeader = props => {
 }
 
 const MobileContainer = props => {
+    const data = useStaticQuery(graphql`
+        query mobileVid {
+          strapiFrontPageVideo{
+            id
+            Video{
+              publicURL
+            } 
+            Name
+          }
+        }
+`)
+    const vid = data.strapiFrontPageVideo.Video.publicURL
     return (
         <div className="mobile">
             <LogoHeader />
@@ -248,7 +276,7 @@ const MobileContainer = props => {
                 <Arrow/>
             </div>
             <FirstText />
-            <Count />
+            <Count count = {props.count}/>
             <SecondText />
             <Form className = "mobileForm" />
         </div>

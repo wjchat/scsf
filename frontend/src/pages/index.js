@@ -9,8 +9,10 @@ import Logo from "../images/Matte.svg"
 import { TimelineMax, TweenLite } from "gsap"
 
 import { gsap } from 'gsap'
-import { CSSPlugin } from 'gsap/CSSPlugin'
 import "../style/loader.scss"
+import axios from 'axios'
+import { CSSPlugin } from 'gsap/CSSPlugin'
+
 
 
 // Force CSSPlugin to not get dropped during build
@@ -138,7 +140,21 @@ const OpeningAnimation = props => {
 const IndexPage = () => {
     const [view, updateView] = useState("opening")
     const [videoTime, updateTime] = useState(0);
-
+      const [count, setCount] = useState(null)
+      useEffect(() => {
+        axios
+        .get("http://localhost:1337/user-uploads/count")
+        .then(response => {
+          setCount(response.data)
+        })
+        setInterval(() => {
+          axios
+            .get("http://localhost:1337/user-uploads/count")
+            .then(response => {
+              setCount(response.data)
+            })
+        }, 3000)
+      }, [])
 
     return (
         <Layout>
@@ -149,12 +165,14 @@ const IndexPage = () => {
                 onClick = {(phase)=>updateView(phase)}
                   /> : ""}
                   {view==="opening" || view === "firstMain" ?  <Landing
+                  count = {count}
                   videoTime = {videoTime}
                   updateTime = {(time)=>updateTime(time)}
                   animateClass = "fromLeft" view = {view}
                   onClick = {(phase)=>updateView(phase)}
                     /> : ""}
                   {view === "main" ? <Landing 
+                  count = {count}
                   videoTime = {videoTime}
                   updateTime = {(time)=>updateTime(time)}
                    view = {view}
@@ -167,7 +185,7 @@ const IndexPage = () => {
             </div>
             
             <div className = 'mobileContainer'>
-                <Mobile />
+                <Mobile count={count} />
             </div>
             
         </Layout>

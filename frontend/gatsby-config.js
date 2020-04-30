@@ -1,3 +1,7 @@
+require("dotenv").config({  
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
 pathPrefix: "/scsf",
   siteMetadata: {
@@ -13,6 +17,18 @@ pathPrefix: "/scsf",
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: "gatsby-source-strapi",
+      options: {
+        apiURL: process.env.API_URL || "http://localhost:1337",
+        contentTypes: [
+          // List of the Content Types you want to be able to request from Gatsby.
+          "user-uploads",
+        ],
+        singleTypes: ['front-page-video'],
+        queryLimit: 1000,
       },
     },
     `gatsby-transformer-sharp`,
@@ -31,6 +47,6 @@ pathPrefix: "/scsf",
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+     `gatsby-plugin-offline`,
   ],
 }

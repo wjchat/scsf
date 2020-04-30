@@ -3,7 +3,6 @@
 $paddingSide: 8vw;
 $bodyText: 4.5vw;
 .mobile{
-    overflow-x: hidden;
     color: $greyX;
     .firstView{
         // background-color: blue;
@@ -11,10 +10,19 @@ $bodyText: 4.5vw;
         display: flex;
         flex-direction: column;
         justify-content: center;
-
+        @include landscape{
+            height: 85vh;
+            margin-top: 15vh;
+        }
         
         video{
           max-width: 100%;
+            @include landscape{
+                max-height: 100%;
+                max-width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
         }
 
         .arrow {
@@ -34,6 +42,9 @@ $bodyText: 4.5vw;
     }
 
     .logoHeader{
+        @include landscape{
+            height: 15vh;
+        }
         position: fixed;
         height: 10vh;
         top: 0;
@@ -44,12 +55,18 @@ $bodyText: 4.5vw;
         .logoImg{
             background-color: #060608;
             max-height: 100%;
+            @include landscape{
+                background-color: transparent;
+            }
         }
     }
     
     .firstText{
         // background-color: red;
-
+        @include landscape{
+            padding: 70vh $paddingSide;
+            line-height: $bodyText;
+        }
         padding: 10vh $paddingSide;
         padding-bottom: 0vh;
         display: flex;
@@ -126,6 +143,9 @@ $bodyText: 4.5vw;
         &>h1{
             height: 70vw;
             justify-content: space-around;
+            @include landscape{
+                height: 80vh;
+            }
         }
         &>div{
             font-size: $bodyText;
@@ -189,8 +209,15 @@ $bodyText: 4.5vw;
         margin: auto;
         transform: scale(3.5); //dude im CHEATING
         margin-bottom: 6vh;
+        @include landscape{
+            transform: scale(2);
+            margin-bottom: 20vh;
+        }
         .x{
             display: none;
+        }
+        .emailText{
+            font-size: 1.7vw !important;
         }
     }
 

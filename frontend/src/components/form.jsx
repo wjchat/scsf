@@ -6,6 +6,10 @@ import arrow from '../images/Arrow.svg';
 
 import { gsap, Power2 } from 'gsap'
 import { CSSPlugin } from 'gsap/CSSPlugin'
+import axios from 'axios'
+
+const localURL = "http://localhost:1337/"
+
 
 
 // Force CSSPlugin to not get dropped during build
@@ -13,6 +17,8 @@ gsap.registerPlugin(CSSPlugin)
 
 const gold = "#d3c371"
 const black = "black"
+
+const calcPercent = (value, total) => `${Math.round((value / total) * 100)}%`
 
 const Message = props => {
     return (
@@ -51,6 +57,8 @@ const FormContainer = props => {
     let fileBox
     let submitBox
     let fileInput
+    let form
+    let emailText
     //state tings
     const [fileLabel, updateFileLabel] = useState("Upload File")
     const [files, updateFile] = useState(null)
@@ -98,20 +106,51 @@ const FormContainer = props => {
             updateMessage("Please upload a photo or video.")
         } else {
             updateMessage(`This part doesn't work yet! U goof`)
-            //handleSubmit();
+            handleSubmit();
         }
     })
+    const handleSubmit = async event =>{
+        updateMessage('Uploading...');
+
+        let fileItems = []
+        for(let each of files){
+            let data = new FormData()
+            data.append("files", each)
+            let upload_res = await axios({
+                method: "POST",
+                url: localURL + "upload",
+                data: data,
+                onUploadProgress: progress =>{
+                    updateMessage(`Uploading: ${calcPercent(progress.loaded, progress.total)}`)
+                }
+            })
+            fileItems.push(upload_res.data[0])
+        }
+        const userUpload = await axios({
+            method: "POST",
+            url: localURL + "user-uploads",
+            data: {
+                email: email,
+                files: fileItems
+            }
+        })
+        updateMessage("Uploaded!")
+        updateFile(null)
+    }
 
     return (
         <div className={props.className}>
-            <form className="flexbox">
+            <form ref = {div=>form=div} 
+               className="flexbox">
                 <div className="email">
                     <div className="labelContainer">
                         <input
+                           ref = {input=>emailText = input}
                             onClick={clearMessage}
                             onChange={setEmail.bind(this)}
                             type="text"
                             placeholder="Enter Email"
+                            className = "emailText"
                         />
                     </div>
                 </div>

@@ -16,18 +16,18 @@ $mobile-width: 450px;
 $minHeight: 350px;
 
 $padding: 17.5%;
-@mixin subAnimate{
-    opacity: .0;
+@mixin subAnimate {
+    opacity: 0;
     filter: blur(4px);
     transform: translateX(-10px);
 }
 
-@mixin border{
-    height: .2vw;
+@mixin border {
+    height: 0.2vw;
     background-color: $goldX;
     // border-radius: 1px;
 }
-@mixin bodyText{
+@mixin bodyText {
     font-size: $bodyText;
     line-height: $bodyLineHeight;
     color: white;
@@ -35,21 +35,30 @@ $padding: 17.5%;
 }
 
 @mixin mobile {
-  @media (max-width: #{$mobile-width}) {
-    @content;
-  }
+    @media (max-width: #{$mobile-width}) {
+        @content;
+    }
+    @media (max-width: 850px) and (orientation: landscape) and (max-height: 420px) {
+        @content;
+    }
 }
 
-body{
+@mixin landscape {
+    @media (max-width: 850px) and (orientation: landscape) and (max-height: 420px) {
+        @content;
+    }
+}
+
+body {
     background-color: $background;
 }
 
 //scrollbars are tacky
 /* Hide scrollbar for Chrome, Safari and Opera */
 body::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 /* Hide scrollbar for IE and Edge */
 body {
-  -ms-overflow-style: none;
+    -ms-overflow-style: none;
 }

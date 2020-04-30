@@ -1,11 +1,11 @@
-import React,{useEffect, useCallback} from "react"
+import React,{useEffect, useCallback, useState} from "react"
 import logo from "../images/Matte.svg"
 import arrow from "../images/Arrow.svg"
-import vid from "../images/video.mp4"
 import {TimelineMax} from "gsap"
 import { gsap, Power2 } from 'gsap'
 import { CSSPlugin } from 'gsap/CSSPlugin'
 import "../style/landing.scss"
+import {useStaticQuery, graphql} from 'gatsby'
 
 // Force CSSPlugin to not get dropped during build
 gsap.registerPlugin(CSSPlugin)
@@ -52,6 +52,14 @@ const Bottom = props => {
     )
 }
 const Right = props => {
+    const [count, updateCount] = useState(props.count)
+    useEffect(()=>{
+        if(props.count < 100000){
+            updateCount(props.count)
+        } else{
+            updateCount("99999+")
+        }
+    }, [props.count])
     return (
         <div className={props.className}>
            <div>
@@ -65,7 +73,7 @@ const Right = props => {
                 <p className = {props.animateClass}>We invite you to help us tell the story of the world.</p>
             </div>
             <div className="bottomRight">
-                <h1 className = {props.animateClass}>641</h1>
+                <h1 className = {props.animateClass}>{props.count}</h1>
                 <p className = {props.animateClass}>stories told</p>
                 <div className="border"></div>
             </div>
@@ -74,6 +82,17 @@ const Right = props => {
     )
 }
 const Vid = props => {
+    const data = useStaticQuery(graphql`
+        query MyQuery {
+          strapiFrontPageVideo{
+            id
+            Video{
+              publicURL
+            }
+            Name
+          }
+        }
+`)
     let video
     useEffect(()=>{
     let vidObject = video 
@@ -97,8 +116,8 @@ const Vid = props => {
         <div className={props.className}>
             <video  
                  ref = {div=>video=div} >
-                <source src={vid} type="video/mp4" />
-                <source src={vid} type="video/ogg" />
+                <source src={data.strapiFrontPageVideo.Video.publicURL} type="video/mp4" />
+                <source src={data.strapiFrontPageVideo.Video.publicURL} type="video/ogg" />
             </video>
         </div>
     )
@@ -283,7 +302,7 @@ const Main = props => {
             animateClass = {props.animateClass}  
             view = {props.view} 
             className="video fromSub" />
-            <Right animateClass = {props.animateClass}  className="right fromSub" />
+            <Right count = {props.count} animateClass = {props.animateClass}  className="right fromSub" />
             <Bottom animateClass = {props.animateClass} onClick = {()=>handleClick()} className="bottom fromSub" />
         </div>
     )

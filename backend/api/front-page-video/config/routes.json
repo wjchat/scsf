@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/front-page-video",
+      "handler": "front-page-video.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/front-page-video",
+      "handler": "front-page-video.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/front-page-video",
+      "handler": "front-page-video.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
